@@ -66,3 +66,10 @@ class BundleHolder {
     }
 
 }
+
+@NonCPS
+def createBundleHolder() {
+    def holder = new BundleHolder()
+    // Initialize your BundleHolder instance
+    return holder
+}
