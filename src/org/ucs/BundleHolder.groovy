@@ -1,3 +1,5 @@
+package org.ucs
+
 class ProjectBundle {
     String project
     String version
