@@ -1,20 +1,5 @@
 package org.ucs
 
-class ProjectBundle {
-    String project
-    String version
-
-    ProjectBundle(String project, String version) {
-        this.project = project
-        this.version = version
-    }
-
-    @Override
-    String toString() {
-        return "\"${project}\": \"${version}\""
-    }
-}
-
 class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
@@ -54,4 +39,20 @@ class BundleHolder {
         }.join(",\n") 
     }
 
+}
+
+
+class ProjectBundle {
+    String project
+    String version
+
+    ProjectBundle(String project, String version) {
+        this.project = project
+        this.version = version
+    }
+
+    @Override
+    String toString() {
+        return "\"${project}\": \"${version}\""
+    }
 }
