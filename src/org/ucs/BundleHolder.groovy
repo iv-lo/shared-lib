@@ -3,29 +3,34 @@ package org.ucs
 import org.ucs.ProjectBundle
 
 class BundleHolder {
-    Map<String, List<ProjectBundle>> bundles = [:]
+    private Map<String, List<ProjectBundle>> bundles = [:]
+    private boolean initialized = false
 
-    BundleHolder() {
-        addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
-        addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
-        
-        addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
-        
-        addBundle("Van_3", new ProjectBundle("//vehicle1", "0.13.0.2"))
-        addBundle("Van_3", new ProjectBundle("//vehicle2", "0.5.0.1"))
-        addBundle("Van_3", new ProjectBundle("//vehicle3", "0.6.0.1"))
-        
-        addBundle("Van_4", new ProjectBundle("//vehicle1", "head"))
-        addBundle("Van_4", new ProjectBundle("//vehicle2", "head"))
-        addBundle("Van_4", new ProjectBundle("//vehicle3", "head"))
-        addBundle("Van_4", new ProjectBundle("//vehicle4", "head"))
-        addBundle("Van_4", new ProjectBundle("//vehicle5", "head"))
-        
-        addBundle("Van_5", new ProjectBundle("//vehicle1", "0.22.0.5"))
-        addBundle("Van_5", new ProjectBundle("//vehicle2", "0.22.6.0"))
+    private void lazyInit() {
+        if (!initialized) {
+            addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
+            addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
+            
+            addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
+            
+            addBundle("Van_3", new ProjectBundle("//vehicle1", "0.13.0.2"))
+            addBundle("Van_3", new ProjectBundle("//vehicle2", "0.5.0.1"))
+            addBundle("Van_3", new ProjectBundle("//vehicle3", "0.6.0.1"))
+            
+            addBundle("Van_4", new ProjectBundle("//vehicle1", "head"))
+            addBundle("Van_4", new ProjectBundle("//vehicle2", "head"))
+            addBundle("Van_4", new ProjectBundle("//vehicle3", "head"))
+            addBundle("Van_4", new ProjectBundle("//vehicle4", "head"))
+            addBundle("Van_4", new ProjectBundle("//vehicle5", "head"))
+            
+            addBundle("Van_5", new ProjectBundle("//vehicle1", "0.22.0.5"))
+            addBundle("Van_5", new ProjectBundle("//vehicle2", "0.22.6.0"))
+            initialized = true
+        }
     }
 
     void addBundle(String projectName, ProjectBundle bundle) {
+        lazyInit() // Ensure initialization before adding
         if (!bundles.containsKey(projectName)) {
             bundles[projectName] = []
         }
@@ -34,7 +39,8 @@ class BundleHolder {
 
     @Override
     String toString() {
-        bundles.collect { projectName, bundleList ->
+        lazyInit() // Ensure initialization before generating string
+        return bundles.collect { projectName, bundleList ->
             def bundleStrings = bundleList.collect { bundle ->
                 "${bundle.toString()}"
             }.join(',\n    ')
@@ -42,5 +48,4 @@ class BundleHolder {
             "\"${projectName}\": [\n    ${bundleStrings}\n]"
         }.join(",\n") 
     }
-
 }
