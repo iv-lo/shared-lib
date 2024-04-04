@@ -1,6 +1,6 @@
 package org.ucs
 
 class BundleHolder {
-    Map<String, List<ProjectBundle>> bundles = [:]
+    Map<String, List<String>> bundles = [:]
 
 }
