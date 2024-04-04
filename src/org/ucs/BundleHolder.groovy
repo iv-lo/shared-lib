@@ -6,7 +6,8 @@ class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
     BundleHolder() {
-        bundles["Van_5"] = [new ProjectBundle("//vehicle1", "0.22.0.5"), new ProjectBundle("//vehicle2", "0.22.6.0")]
+        // bundles["Van_5"] = [new ProjectBundle("//vehicle1", "0.22.0.5"), new ProjectBundle("//vehicle2", "0.22.6.0")]
+        addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
     }
 
     void addBundle(String projectName, ProjectBundle bundle) {
