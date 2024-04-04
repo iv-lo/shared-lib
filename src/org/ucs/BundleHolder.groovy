@@ -5,6 +5,13 @@ import org.ucs.ProjectBundle
 class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
+    void addBundle(String projectName, ProjectBundle bundle) {
+        if (!bundles.containsKey(projectName)) {
+            bundles[projectName] = []
+        }
+        bundles[projectName].add(bundle)
+    }
+
     BundleHolder() {
         addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
         addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
@@ -26,12 +33,7 @@ class BundleHolder {
     }
 
 
-    void addBundle(String projectName, ProjectBundle bundle) {
-        if (!bundles.containsKey(projectName)) {
-            bundles[projectName] = []
-        }
-        bundles[projectName].add(bundle)
-    }
+
 
     // void init() {
     //     addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
