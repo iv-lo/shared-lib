@@ -5,9 +5,27 @@ import org.ucs.ProjectBundle
 class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
-    BundleHolder() {
-        // bundles["Van_5"] = [new ProjectBundle("//vehicle1", "0.22.0.5"), new ProjectBundle("//vehicle2", "0.22.6.0")]
-        addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
+    // BundleHolder() {
+    //     // bundles["Van_5"] = [new ProjectBundle("//vehicle1", "0.22.0.5"), new ProjectBundle("//vehicle2", "0.22.6.0")]
+    //     addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
+    // }
+
+    static BundleHolder createInitializedInstance() {
+        BundleHolder holder = new BundleHolder()
+        holder.addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
+        holder.addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
+        holder.addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
+        holder.addBundle("Van_3", new ProjectBundle("//vehicle1", "0.13.0.2"))
+        holder.addBundle("Van_3", new ProjectBundle("//vehicle2", "0.5.0.1"))
+        holder.addBundle("Van_3", new ProjectBundle("//vehicle3", "0.6.0.1"))
+        holder.addBundle("Van_4", new ProjectBundle("//vehicle1", "head"))
+        holder.addBundle("Van_4", new ProjectBundle("//vehicle2", "head"))
+        holder.addBundle("Van_4", new ProjectBundle("//vehicle3", "head"))
+        holder.addBundle("Van_4", new ProjectBundle("//vehicle4", "head"))
+        holder.addBundle("Van_4", new ProjectBundle("//vehicle5", "head"))
+        holder.addBundle("Van_5", new ProjectBundle("//vehicle1", "0.22.0.5"))
+        holder.addBundle("Van_5", new ProjectBundle("//vehicle2", "0.22.6.0"))
+        return holder
     }
 
     void addBundle(String projectName, ProjectBundle bundle) {
