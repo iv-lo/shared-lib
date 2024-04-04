@@ -6,23 +6,7 @@ class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
     BundleHolder() {
-        this.addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
-        this.addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
-        
-        this.addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
-        
-        this.addBundle("Van_3", new ProjectBundle("//vehicle1", "0.13.0.2"))
-        this.addBundle("Van_3", new ProjectBundle("//vehicle2", "0.5.0.1"))
-        this.addBundle("Van_3", new ProjectBundle("//vehicle3", "0.6.0.1"))
-        
-        this.addBundle("Van_4", new ProjectBundle("//vehicle1", "head"))
-        this.addBundle("Van_4", new ProjectBundle("//vehicle2", "head"))
-        this.addBundle("Van_4", new ProjectBundle("//vehicle3", "head"))
-        this.addBundle("Van_4", new ProjectBundle("//vehicle4", "head"))
-        this.addBundle("Van_4", new ProjectBundle("//vehicle5", "head"))
-        
-        this.addBundle("Van_5", new ProjectBundle("//vehicle1", "0.22.0.5"))
-        this.addBundle("Van_5", new ProjectBundle("//vehicle2", "0.22.6.0"))
+        bundles["Van_5"] = [ProjectBundle("//vehicle1", "0.22.0.5"), ProjectBundle("//vehicle2", "0.22.6.0")]
     }
 
     void addBundle(String projectName, ProjectBundle bundle) {
