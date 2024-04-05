@@ -1,5 +1,7 @@
 package org.ucs
 
+import groovy.json.JsonSlurper
+
 class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
@@ -43,12 +45,15 @@ class BundleHolder {
 
     void initializeFromMap(String bundlesProjectsText) {
         bundles.clear()
-        def evaluatedMap = evaluate(bundlesProjectsText)
-        evaluatedMap.each { projectName, bundlesMap ->
-            bundlesMap.each { projectPath, version ->
-                this.addBundle(projectName, new ProjectBundle(projectPath, version))
-            }
-        }
+        def jsonSlurper = new JsonSlurper()
+        def projectsMap = jsonSlurper.parseText(projectBundlesJson)
+        // println(projectsMap)
+        // def evaluatedMap = evaluate(bundlesProjectsText)
+        // evaluatedMap.each { projectName, bundlesMap ->
+        //     bundlesMap.each { projectPath, version ->
+        //         this.addBundle(projectName, new ProjectBundle(projectPath, version))
+        //     }
+        // }
     }
 
 }
