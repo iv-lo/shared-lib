@@ -75,7 +75,7 @@ class BundleHolder {
     List<Map<String, String>> getBundleProjects(String key) {
         def projects = bundles.getOrDefault(key, [])
         String projectText = projects.collect { bundle ->
-            "${bundle.toString()}"
+            "${bundle.toWorkspaceCfg()}"
         }.join("\n")
         return projectText
     }
@@ -95,5 +95,9 @@ class ProjectBundle {
     @Override
     String toString() {
         return "{\"${project}\": \"${version}\"}"
+    }
+
+    String toWorkspaceCfg(){
+        return "${project} ${version}"
     }
 }
