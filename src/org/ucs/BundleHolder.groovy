@@ -72,7 +72,7 @@ class BundleHolder {
         }
     }
 
-    List<Map<String, String>> get(String key) {
+    List<Map<String, String>> getProjects(String key) {
         return bundles.getOrDefault(key, [])
     }
 
