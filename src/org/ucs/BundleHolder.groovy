@@ -3,7 +3,7 @@ package org.ucs
 import groovy.json.JsonSlurper
 
 class BundleHolder {
-    Map<String, List<ProjectBundle>> bundles = [:]
+    protected Map<String, List<ProjectBundle>> bundles = [:]
 
     static BundleHolder createInitializedInstance() {
         BundleHolder holder = new BundleHolder()
