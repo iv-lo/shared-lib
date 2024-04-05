@@ -47,7 +47,15 @@ class BundleHolder {
         bundles.clear()
         def jsonSlurper = new JsonSlurper()
         def projectsMap = jsonSlurper.parseText(bundlesProjectsText)
-        return projectsMap
+
+        projectsMap.each { projectName, bundlesList ->
+            bundlesList.each { Map bundleInfo ->
+                bundleInfo.each { projectPath, version ->
+                    this.addBundle(projectName, new ProjectBundle(projectPath, version))
+                }
+            }
+        }
+
         // def evaluatedMap = evaluate(bundlesProjectsText)
         // evaluatedMap.each { projectName, bundlesMap ->
         //     bundlesMap.each { projectPath, version ->
