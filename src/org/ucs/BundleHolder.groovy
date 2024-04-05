@@ -30,13 +30,15 @@ class BundleHolder {
 
     @Override
     String toString() {
-        bundles.collect { projectName, bundleList ->
+        def bundleStrings = bundles.collect { projectName, bundleList ->
             def bundleStrings = bundleList.collect { bundle ->
                 "${bundle.toString()}"
             }.join(',\n    ')
             
             "\"${projectName}\": [\n    ${bundleStrings}\n]"
         }.join(",\n") 
+
+        return "[\n${bundleStrings}\n]"
     }
 
     void initializeFromMap(Map evaluatedMap) {
