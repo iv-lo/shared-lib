@@ -41,10 +41,8 @@ class BundleHolder {
         return "[\n${bundleStrings}\n]"
     }
 
-    void initializeFromMap(String projectBundlesString) {
+    void initializeFromMap(Map evaluatedMap) {
         bundles.clear()
-        def evaluatedMap = evaluate(projectBundlesString)
-
         evaluatedMap.each { projectName, bundlesMap ->
             bundlesMap.each { projectPath, version ->
                 this.addBundle(projectName, new ProjectBundle(projectPath, version))
