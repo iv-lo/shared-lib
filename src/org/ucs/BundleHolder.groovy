@@ -74,7 +74,10 @@ class BundleHolder {
 
     List<Map<String, String>> getBundleProjects(String key) {
         def projects = bundles.getOrDefault(key, [])
-        return projects
+        String projectText = projects.collect { bundle ->
+            "${bundle.project}: ${bundle.version}"
+        }.join("\n")
+        return projectText
     }
 
 }
