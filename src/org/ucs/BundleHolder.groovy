@@ -5,7 +5,7 @@ import groovy.json.JsonSlurper
 class BundleHolder {
     Map<String, List<ProjectBundle>> bundles = [:]
 
-    BundleHolder() {
+    public BundleHolder() {
         holder.addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
         holder.addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
         holder.addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
