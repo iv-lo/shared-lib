@@ -72,6 +72,10 @@ class BundleHolder {
         }
     }
 
+    List<Map<String, String>> get(String key) {
+        return bundles.getOrDefault(key, [])
+    }
+
 }
 
 
