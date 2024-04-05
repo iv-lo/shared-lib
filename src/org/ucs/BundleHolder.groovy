@@ -73,7 +73,8 @@ class BundleHolder {
     }
 
     List<Map<String, String>> getBundleProjects(String key) {
-        return bundles.getOrDefault(key, [])
+        def projects = bundles.getOrDefault(key, [])
+        return projects
     }
 
 }
