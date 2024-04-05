@@ -70,6 +70,6 @@ class ProjectBundle {
 
     @Override
     String toString() {
-        return "\"${project}\": \"${version}\""
+        return "{\"${project}\": \"${version}\"}"
     }
 }
