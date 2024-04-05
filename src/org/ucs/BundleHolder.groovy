@@ -34,7 +34,7 @@ class BundleHolder {
 
     static BundleHolder createInitializedInstance() {
         BundleHolder holder = new BundleHolder()
-        this.initializeFromMap(this.initBundles)
+        this.initializeFromMap(initBundles)
         return holder
     }
 
