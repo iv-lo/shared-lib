@@ -55,13 +55,6 @@ class BundleHolder {
                 }
             }
         }
-
-        // def evaluatedMap = evaluate(bundlesProjectsText)
-        // evaluatedMap.each { projectName, bundlesMap ->
-        //     bundlesMap.each { projectPath, version ->
-        //         this.addBundle(projectName, new ProjectBundle(projectPath, version))
-        //     }
-        // }
     }
 
 }
