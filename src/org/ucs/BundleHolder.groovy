@@ -3,9 +3,9 @@ package org.ucs
 import groovy.json.JsonSlurper
 
 class BundleHolder {
-    protected Map<String, List<ProjectBundle>> bundles = [:]
+    Map<String, List<ProjectBundle>> bundles = [:]
 
-    public BundleHolder() {
+    BundleHolder() {
         holder.addBundle("Van_1", new ProjectBundle("//vehicle1", "0.0.9.0"))
         holder.addBundle("Van_1", new ProjectBundle("//vehicle2", "0.0.9.0"))
         holder.addBundle("Van_2", new ProjectBundle("//vehicle1", "0.2.0.0"))
