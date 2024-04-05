@@ -40,6 +40,7 @@ class BundleHolder {
     }
 
     void initializeFromMap(Map evaluatedMap) {
+        bundles.clear()
         evaluatedMap.each { projectName, bundlesMap ->
             bundlesMap.each { projectPath, version ->
                 this.addBundle(projectName, new ProjectBundle(projectPath, version))
