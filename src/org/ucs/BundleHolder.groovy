@@ -37,7 +37,7 @@ class BundleHolder {
                 "${bundle.toString()}"
             }.join(',\n    ')
             
-            "\"${projectName}\": {\n    ${bundleStrings}\n}"
+            "\"${projectName}\": [\n    ${bundleStrings}\n]"
         }.join(",\n") 
 
         return "{\n${bundleStrings}\n}"
