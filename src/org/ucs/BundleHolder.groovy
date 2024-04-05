@@ -39,13 +39,9 @@ class BundleHolder {
         }.join(",\n") 
     }
 
-    void initializeFromProjectBundlesString(String projectBundlesString) {
-        // Use Groovy's dynamic evaluation to parse the string
-        // Ensure the string is in a proper format for evaluation
-        def evaluatedMap = evaluate(projectBundlesString)
-
-        evaluatedMap.each { projectName, bundleList ->
-            bundleList.each { projectPath, version ->
+    void initializeFromMap(Map evaluatedMap) {
+        evaluatedMap.each { projectName, bundlesMap ->
+            bundlesMap.each { projectPath, version ->
                 this.addBundle(projectName, new ProjectBundle(projectPath, version))
             }
         }
