@@ -46,7 +46,7 @@ class BundleHolder {
     void initializeFromMap(String bundlesProjectsText) {
         bundles.clear()
         def jsonSlurper = new JsonSlurper()
-        def projectsMap = jsonSlurper.parseText(projectBundlesJson)
+        def projectsMap = jsonSlurper.parseText(bundlesProjectsText)
         // println(projectsMap)
         // def evaluatedMap = evaluate(bundlesProjectsText)
         // evaluatedMap.each { projectName, bundlesMap ->
