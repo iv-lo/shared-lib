@@ -3,7 +3,7 @@ package org.ucs
 import groovy.json.JsonSlurper
 
 class BundleHolder {
-    protected Map<String, List<ProjectBundle>> bundles = [:]
+    protected Map<String, List<Project>> bundles = [:]
     String initBundles = """
             {
         "Van_1": [
@@ -38,7 +38,7 @@ class BundleHolder {
         return holder
     }
 
-    void addBundle(String projectName, ProjectBundle bundle) {
+    void addBundle(String projectName, Project bundle) {
         if (!bundles.containsKey(projectName)) {
             bundles[projectName] = []
         }
@@ -58,7 +58,7 @@ class BundleHolder {
         return "{\n${bundleStrings}\n}"
     }
 
-    void initializeFromMap(String bundlesProjectsText) {
+    void initializeFromString(String bundlesProjectsText) {
         bundles.clear()
         def jsonSlurper = new JsonSlurper()
         def projectsMap = jsonSlurper.parseText(bundlesProjectsText)
@@ -66,7 +66,7 @@ class BundleHolder {
         projectsMap.each { projectName, bundlesList ->
             bundlesList.each { Map bundleInfo ->
                 bundleInfo.each { projectPath, version ->
-                    this.addBundle(projectName, new ProjectBundle(projectPath, version))
+                    this.addBundle(projectName, new Project(projectPath, version))
                 }
             }
         }
@@ -83,11 +83,11 @@ class BundleHolder {
 }
 
 
-class ProjectBundle {
+class Project {
     String project
     String version
 
-    ProjectBundle(String project, String version) {
+    Project(String project, String version) {
         this.project = project
         this.version = version
     }
@@ -99,5 +99,9 @@ class ProjectBundle {
 
     String toWorkspaceCfgLink(){
         return "${project} ${version}"
+    }
+
+    String getName(){
+        return project.split('/')[-1]
     }
 }
