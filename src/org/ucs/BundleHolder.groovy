@@ -39,7 +39,7 @@ class BundleHolder {
     }
 
     void addBundle(String projectName, Project bundle) {
-        if (!bundles.containsKey(projectName)) {
+        if (!_bundles.containsKey(projectName)) {
             _bundles[projectName] = []
         }
         _bundles[projectName].add(bundle)
