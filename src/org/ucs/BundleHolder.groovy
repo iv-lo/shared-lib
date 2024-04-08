@@ -3,7 +3,7 @@ package org.ucs
 import groovy.json.JsonSlurper
 
 class BundleHolder {
-    protected Map<String, List<Project>> bundles = [:]
+    protected Map<String, List<Project>> _bundles = [:]
     String initBundles = """
             {
         "Van_1": [
@@ -40,16 +40,15 @@ class BundleHolder {
 
     void addBundle(String projectName, Project bundle) {
         if (!bundles.containsKey(projectName)) {
-            bundles[projectName] = []
+            _bundles[projectName] = []
         }
-        bundles[projectName].add(bundle)
+        _bundles[projectName].add(bundle)
     }
 
-    @Override
-    String toString() {
-        def bundleStrings = bundles.collect { projectName, bundleList ->
+    String toJsonString() {
+        def bundleStrings = _bundles.collect { projectName, bundleList ->
             def bundleStrings = bundleList.collect { bundle ->
-                "${bundle.toString()}"
+                "${bundle.toJsonString()}"
             }.join(',\n    ')
             
             "\"${projectName}\": [\n    ${bundleStrings}\n]"
@@ -59,7 +58,7 @@ class BundleHolder {
     }
 
     void initializeFromString(String bundlesProjectsText) {
-        bundles.clear()
+        _bundles.clear()
         def jsonSlurper = new JsonSlurper()
         def projectsMap = jsonSlurper.parseText(bundlesProjectsText)
 
@@ -87,19 +86,19 @@ class BundleHolder {
 class Project {
     String project
     String version
+    String commit
 
     Project(String project, String version) {
         this.project = project
         this.version = version
     }
 
-    @Override
-    String toString() {
+    String toJsonString() {
         return "{\"${project}\": \"${version}\"}"
     }
 
     String toWorkspaceCfgLink(){
-        return "${project} ${version}"
+        return "LINK ${project} ${version}"
     }
 
     String getName(){
