@@ -72,7 +72,7 @@ class BundleHolder {
     }
 
     List<Map<String, String>> getBundleProjects(String key) {
-        return bundles.getOrDefault(key, [])
+        return _bundles.getOrDefault(key, [])
         // def projects = bundles.getOrDefault(key, [])
         // String projectText = projects.collect { bundle ->
         //     "${bundle.toWorkspaceCfgLink()}"
